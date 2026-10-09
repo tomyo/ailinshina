@@ -41,7 +41,7 @@
 h1 {
   font-weight: normal;
   font-stretch: normal;
-  font-size: min(3em, 10vw);
+  font-size: min(4em, 10vw);
   letter-spacing: 4px;
   font-family: var(--font-family-secondary);
   text-transform: uppercase;
@@ -54,7 +54,7 @@ body {
   color: var(--main-color);
   background-color: var(--background-color);
   background-image: url("/assets/images/cover-original.webp");
-  background-position: center center;
+  background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -63,11 +63,16 @@ main {
   align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  padding-block: min(6rem, 14vh);
+  padding-block: 3rem min(6rem, 14vh);
   padding-inline: 0.5em;
   height: 100%;
   gap: 2em;
   justify-content: space-between;
+}
+
+main h1 {
+  color: black;
+  font-weight: bold;
 }
 
 main > * {
