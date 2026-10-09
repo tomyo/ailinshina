@@ -1,11 +1,9 @@
 @font-face {
-  font-family: "Aquatico";
+  font-family: "Nothing You Could Do";
   font-style: normal;
   font-weight: normal;
-  font-display: block;
-  src: url("/assets/fonts/Aquatico-Regular.woff2") format("woff2"),
-    url("/assets/fonts/Aquatico-Regular.otf") format("opentype"),
-    url("/assets/fonts/Aquatico-Regular.ttf") format("truetype");
+  font-display: swap;
+  src: url("/assets/fonts/NothingYouCouldDo-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -28,7 +26,7 @@
   --main-color: hsl(var(--h), var(--s), var(--ml));
   --background-color: hsl(var(--h), var(--s), var(--bl));
   --font-family-primary: "Lucida Grande", system-ui;
-  --font-family-secondary: "Aquatico", system-ui;
+  --font-family-secondary: "Nothing You Could Do", system-ui;
   --font-family-fallback: system-ui, sans-serif;
   color-scheme: dark;
 
