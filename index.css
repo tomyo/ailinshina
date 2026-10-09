@@ -1,0 +1,213 @@
+@font-face {
+  font-family: "Aquatico";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("/assets/fonts/Aquatico-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Aquatico-Regular.otf") format("opentype"),
+    url("/assets/fonts/Aquatico-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lucida Grande";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/assets/fonts/LucidaGrande.subset.ttf") format("truetype");
+  src: url("/assets/fonts/LucidaGrande.subset.otf") format("otf");
+  src: url("/assets/fonts/LucidaGrande.subset.woff2") format("woff2");
+  unicode-range: U+0020-007E;
+}
+
+:root,
+::backdrop {
+  --h: 0; /* Hue */
+  --s: 0%; /* Sasturation */
+  --ml: 98%; /* Main lightness */
+  --bl: 0%; /* Background lightness */
+  --main-color: hsl(var(--h), var(--s), var(--ml));
+  --background-color: hsl(var(--h), var(--s), var(--bl));
+  --font-family-primary: "Lucida Grande", system-ui;
+  --font-family-secondary: "Aquatico", system-ui;
+  --font-family-fallback: system-ui, sans-serif;
+  color-scheme: dark;
+
+  height: 100%;
+}
+
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: min(3em, 10vw);
+  letter-spacing: 4px;
+  font-family: var(--font-family-secondary);
+  text-transform: uppercase;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: var(--font-family-primary);
+  color: var(--main-color);
+  background-color: var(--background-color);
+  background-image: url("/assets/images/cover-original.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-block: min(6rem, 14vh);
+  padding-inline: 0.5em;
+  height: 100%;
+  gap: 2em;
+  justify-content: space-between;
+}
+
+main > * {
+  margin: 0;
+}
+
+main nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#lang-switcher {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  border: none;
+  width: min-content;
+  appearance: push-button;
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+#lang-switcher option {
+  background-color: var(--background-color);
+}
+
+.social-buttons {
+  text-align: center;
+}
+
+.social-buttons a {
+  padding: 0;
+  display: inline-flex;
+  margin: 3px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.social-buttons img {
+  height: 17px;
+  width: 17px;
+  margin: 0;
+  filter: invert(1);
+}
+
+.info-epk {
+  display: flex;
+  gap: 0.6em;
+  justify-content: center;
+}
+
+.info-epk .button,
+.info-epk button {
+  padding: 6px 16px;
+}
+
+.button,
+button,
+*::part(button) {
+  display: block;
+  padding: 6px 12px;
+  border: 1px solid var(--main-color);
+  border-radius: 1em;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-shadow: none;
+  text-decoration: none;
+  border-color: var(--main-color);
+  opacity: 0.8;
+  color: inherit;
+  background-color: inherit;
+  cursor: pointer;
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.button:hover,
+button:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+/* modal v2 */
+dialog {
+  background-color: transparent;
+  border-radius: 1rem;
+  color: inherit;
+  font-family: system-ui;
+  letter-spacing: 0.1px;
+  max-width: 60ch;
+  padding: 2rem;
+}
+
+dialog p {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+dialog::backdrop {
+  background-color: hsla(var(--h), var(--s), var(--bl), 0.5);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+}
+
+dialog form[method="dialog"] {
+  margin-top: 2rem;
+  text-align: end;
+}
+
+dialog[open] {
+  animation: dialog-show 300ms ease normal;
+}
+
+@keyframes dialog-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Forms */
+
+input {
+  border-radius: 20px;
+  border: 1px solid var(--main-color);
+  padding: 6px 12px;
+  background-color: color-mix(in srgb, var(--main-color) 10%, transparent);
+}

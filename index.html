@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <title>Ailinsinha</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Ailinsinha, cantautora y productora argentina de música consciente"
+    lang="es"
+  />
+  <meta
+    name="description"
+    content="Ailinsinha, Argentine singer-songwriter and producer of conscious music"
+    lang="en"
+  />
+
+  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+  <link
+    rel="preload"
+    href="/assets/fonts/LucidaGrande.subset.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/assets/fonts/Aquatico-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" type="text/css" href="index.css" />
+
+  <header>
+    <select id="lang-switcher" class="button">
+      <option value="es" lang="es" default>ES</option>
+      <option value="en" lang="en">EN</option>
+    </select>
+  </header>
+
+  <main>
+    <h1 class="item">Ailinsinha</h1>
+
+    <nav>
+      <div class="social-buttons">
+        <a
+          class="button"
+          href="https://instagram.com/ailinsinha"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="@ailinsinha en Instagram"
+        >
+          <img alt="Instagram" src="/assets/images/instagram.svg" />
+        </a>
+        <a
+          class="button"
+          href="https://wa.me/5493544447123"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="WhatsApp +54 3544 447123"
+        >
+          <img alt="WhatsApp" src="/assets/images/whatsapp.svg" />
+        </a>
+        <a
+          class="button"
+          href="mailto:ailinpereyraluque95@gmail.com"
+          title="Email ailinpereyraluque95@gmail.com"
+        >
+          <img alt="Email" src="/assets/images/envelope.svg" />
+        </a>
+        <br />
+        <a
+          class="button"
+          href="https://www.youtube.com/@ailinsinha"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="@ailinsinha en YouTube"
+        >
+          <img alt="YouTube" src="/assets/images/youtube.svg" />
+        </a>
+        <a
+          class="button"
+          href="https://open.spotify.com/intl-es/artist/4ufLpivkbJU6jb2ZAT0rut?si=ACH5Mz2UTBKnVnXmCHb14Q"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Ailinsinha en Spotify"
+        >
+          <img alt="Spotify" src="/assets/images/spotify.svg" />
+        </a>
+        <a
+          class="button"
+          href="https://music.apple.com/us/artist/ailinsinha/1519139486"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Ailinsinha en Apple Music"
+        >
+          <img alt="Apple Music" src="/assets/images/itunes.svg" />
+        </a>
+      </div>
+
+      <div class="info-epk">
+        <button class="button" onclick="pressInfoDialog.showModal()">+ Info</button>
+        <a
+          class="button"
+          href="https://drive.google.com/drive/folders/1j0jt3IF14wMnDtghB4ItGzJ_7hJV5HK0"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="EPK"
+          >EPK</a
+        >
+      </div>
+    </nav>
+  </main>
+
+  <dialog id="pressInfoDialog">
+    <h2 data-l10n-key="press-info-title">Información de prensa</h2>
+    <p data-l10n-key="press-info-text">
+      Ailinsinha es una cantautora y productora argentina de espíritu nómada.
+      Su propuesta en vivo es un ritual puramente acústico y orgánico que entrelaza la cosmovisión andina, los cantos sagrados en portugués y la lengua quechua. Canaliza su música a través de la calidez profunda de su voz, la guitarra, el charango y el tambor chamánico.
+    </p>
+    <form method="dialog">
+      <button value="close" data-l10n-key="close">Cerrar</button>
+    </form>
+  </dialog>
+
+  <script type="module">
+    async function localize() {
+      const { useL10n } = await import("./lib/i18n/use-l10n.js");
+      const [getUILanguage, getPreferredLanguage, translateInto] = useL10n({
+        filesPath: "./l10n/",
+      });
+      const langSwitcher = document.querySelector("#lang-switcher");
+
+      langSwitcher.addEventListener("change", (e) =>
+        translateInto(e.target.value)
+      );
+
+      if (getUILanguage() !== getPreferredLanguage()) {
+        await translateInto(getPreferredLanguage());
+      }
+
+      langSwitcher.value = getUILanguage();
+    }
+
+    localize();
+  </script>
+</html>
